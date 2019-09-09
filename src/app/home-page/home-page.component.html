@@ -1,0 +1,28 @@
+<div class="upload-div" [style.height.px]="windowHeight">
+  <div class="header" style="width: 100%; height: 40px; background: #666349; display: flex;justify-content: center;">
+    <h1 *ngIf="!thermometers.length">You don't have any thermometer, please upload one file
+    </h1>
+    <select *ngIf="thermometers.length" (change)="selectThermometer($event.target.value)"
+      style="height: 30px; margin-top: 5px; width: 200px;">
+      <option *ngFor="let item of thermometers" value="{{item._id}}">{{item.name}}</option>
+    </select>
+  </div>
+  <div class="home-content" [style.height.px]="windowHeight-45"
+    style="margin-top: 5px; width: 100%;display: flex;justify-content: center;align-items: center;">
+    <div class="content" *ngIf="!uploading">
+      <h1>Upload your JSON file which have your data in the form of array</h1>
+      <div style="display: flex;align-items: center;align-items: center;;justify-content: center;">
+        <input type="file" name="temp_file" accept=".json" ng2FileSelect [uploader]="uploader" />
+      </div>
+      <div style="margin-top: 3%;">
+        <button class="submit-btn"
+          style="margin-left: 34%;font-size: 12px;font-family: monospace;font-weight: bold; border-radius: 10px;"
+          (click)="uploadFile();" [disabled]="!uploader.getNotUploadedItems().length">Send File</button>
+      </div>
+    </div>
+    <div *ngIf="uploading">
+      <img src="./../../assets/uploading_gif.gif" alt="uploading-images" />
+    </div>
+  </div>
+
+</div>

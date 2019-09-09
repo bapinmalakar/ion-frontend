@@ -1,0 +1,18 @@
+<div class="view-component">
+  <div class="processing" *ngIf="processing" style="display: flex;justify-content: center;">
+    <img src="./../../assets/processing.gif" alt="processing-image" />
+  </div>
+  
+  <div *ngIf="!processing && !readingFinish" class="still-process-message"
+    style="width: 100%; height: 40px;    display: block;width: 100%;height: 40px;text-align: center;font-size: 10px;background: #989879;">
+    <h1 style="line-height: 40px;">WE ARE STILL PROCESSING YOUR FILE</h1>
+  </div>
+  <div *ngIf="!processing && readingFinish" class="list-of-year">
+    <select (change)="setSelectedYear($event.target.value)">
+      <option *ngFor="let year of analyticsData.years" value="{{year}}">{{year}}</option>
+    </select>
+  </div>
+  <div style="margin-top: 20px; overflow: unset !important;" *ngIf="!processing && selectedYear && daySpentChart && monthSpentChart">
+    <highchart-component [day_spent_data]="daySpentChart" [mont_spent_data]="monthSpentChart" [finish_reading]="readingFinish"></highchart-component>
+  </div>
+</div>
