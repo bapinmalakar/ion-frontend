@@ -4,7 +4,7 @@
     </h1>
     <select *ngIf="thermometers.length" (change)="selectThermometer($event.target.value)"
       style="height: 30px; margin-top: 5px; width: 200px;">
-      <option *ngFor="let item of thermometers" value="{{item._id}}">{{item.name}}</option>
+      <option *ngFor="let item of thermometers;let i=index;" value="{{i}}">{{item.name}}</option>
     </select>
   </div>
   <div class="home-content" [style.height.px]="windowHeight-45"

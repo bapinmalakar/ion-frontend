@@ -1,11 +1,12 @@
 .list-of-year{
-    width: 100%;
+    width: 98%;
     height: 40px;
     display: block;
     height: 40px;
     font-size: 10px;
     background: #989879;
     margin-top: 13px;
+    margin-left: 1%;
 }
 
 select{

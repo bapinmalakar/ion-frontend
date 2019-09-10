@@ -36,16 +36,15 @@ export class HomePageComponent implements OnInit {
 
   uploadFile() {
     this.uploading = true;
-    this.fileName  = this.uploader.queue[0].file.name.split('.')[0];
-    console.log('File name is: ', this.fileName);
+    this.fileName = this.uploader.queue[0].file.name.split('.')[0];
     if (!this.thermometers.length) {
       this.uploader.uploadAll();
     } else {
-      
+
       const indexIs = this.thermometers.findIndex(d => d.name == this.fileName);
       if (indexIs) {
         bootbox.confirm({
-          message: `${this.fileName} already present. Ar you want to update again?`,
+          message: `${this.fileName} already present. Are you want to update again?`,
           buttons: {
             confirm: {
               label: 'Yes, update',
@@ -63,20 +62,19 @@ export class HomePageComponent implements OnInit {
   }
 
   submitFile(result: any) {
-    console.log('Result: ', result);
     if (result) {
-      console.log('Inside true')
       this.uploader.uploadAll();
     } else {
       this.uploading = false;
     }
   }
 
-  selectThermometer(value: any) {
-    if (value == '-1') {
+  selectThermometer(index: number) {
+    if (!Number(index)) {
       return;
+    } else {
+      window.location.replace(`${this.commomStorage.app}/all_view/${this.thermometers[index].name}`)
     }
-    console.log('Value is: ', value);
   }
 
   getAllThermometer() {

@@ -48,6 +48,7 @@ export class ViewDetailsComponent implements OnInit {
       }
     });
   }
+
   getFileData(analyticsData) {
     this.processing = false;
     this.analyticsData = analyticsData;
@@ -91,6 +92,11 @@ export class ViewDetailsComponent implements OnInit {
       yAxis: {
         title: {
           text: 'Daily Usages values'
+        },
+        labels: {
+          formatter: function () {
+            return (Math.abs(this.value / 10));
+          }
         }
       },
       series: [
@@ -142,6 +148,10 @@ export class ViewDetailsComponent implements OnInit {
     };
     console.log('Now object is: ', obj);
     this.monthSpentChart = obj;
+  }
+
+  navigateToAllView(path: string) {
+    window.location.replace(`${this._commonStorage.app}/${path}`);
   }
 
 

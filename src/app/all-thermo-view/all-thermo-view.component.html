@@ -1,3 +1,29 @@
-<p>
-  all-thermo-view works!
-</p>
+<div class="all-view-component">
+  <div class="loading" *ngIf="loading"
+    style="height: 40px; width: 98%; text-align: center; margin-left: 1%; margin-top: 13px;background: #989879;">
+    <h1 style="line-height: 40px;margin-top: 0px; margin-bottom: unset;font-size: 20px;">Fetching thermometer list...
+    </h1>
+  </div>
+  <div class="thermo-list" *ngIf="!loading && thermometers.length"
+    style="height: 40px; width: 98%; margin-left: 1%; margin-top: 13px;background: #989879;">
+    <select (change)=onChangeSelection($event.target.value)
+      style="margin-top: 6px; height: 28px; width: 196px;float: left; margin-left: 10px;">
+      <option *ngFor="let thermo of thermometers;let i=index;" value="{{i}}" [selected]="thermo.name==selectedName">{{thermo.name}}</option>
+    </select>
+
+    <select (change)=onChangeYear($event.target.value) *ngIf="!fetchingData && thermoDetails && thermoDetails.years"
+      style="margin-top: 6px; height: 28px; width: 196px;float: right; margin-right: 10px;">
+      <option *ngFor="let year of thermoDetails.years;let i=index;" value="{{i}}">{{year}}</option>
+    </select>
+
+  </div>
+  <div class="data-viewer">
+    <div class="fetching" *ngIf="fetchingData"
+      style="width: 40%;margin-top: 30%;margin-left: 30%;text-align: center;font-size: 20px;font-weight: 200;color: cornflowerblue;">
+      Fetching details, please wait...</div>
+  </div>
+  <div class="darta-chart" style="width: 98%; margin-left: 1%; margin-top: 20px;" *ngIf="thermoDetails">
+    <highchart-component *ngIf="daySpentChart && monthSpentChart" [day_spent_data]="daySpentChart"
+      [mont_spent_data]="monthSpentChart" [finish_reading]="true"></highchart-component>
+  </div>
+</div>

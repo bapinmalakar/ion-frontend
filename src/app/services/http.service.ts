@@ -21,4 +21,11 @@ export class HttpService {
                 catchError((err: HttpErrorResponse) => throwError(err))
             )
     }
+
+    fetchDetailsOfAThermometer(name: string) {
+        return this._http.get(`${this._commonStorageService.api}thermo_detail/${name}`, { headers: this.basicHeader }).pipe(
+            map(res => res['data']),
+            catchError(err => throwError(err))
+        )
+    }
 }
