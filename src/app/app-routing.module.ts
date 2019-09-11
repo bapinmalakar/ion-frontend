@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'views/:name', component: ViewDetailsComponent },
   { path: 'all_view', component: AllThermoViewComponent },
-  { path: 'all_view/:name', component: AllThermoViewComponent }
+  { path: 'all_view/:name', component: AllThermoViewComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
