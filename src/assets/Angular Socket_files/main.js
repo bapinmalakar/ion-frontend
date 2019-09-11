@@ -333,7 +333,7 @@ module.exports = "<div class=\"upload-div\" [style.height.px]=\"windowHeight\"\n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageComponent", function() { return HomePageComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ng2_file_upload_ng2_file_upload__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng2-file-upload/ng2-file-upload */ "./node_modules/ng2-file-upload/ng2-file-upload.js");
@@ -343,14 +343,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var HomePageComponent = /** @class */ (function () {
-    function HomePageComponent(commomStorage) {
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent(commomStorage) {
         this.commomStorage = commomStorage;
         this.windowHeight = 770;
         this.uploading = false;
         this.uploader = new ng2_file_upload_ng2_file_upload__WEBPACK_IMPORTED_MODULE_2__["FileUploader"]({ url: this.commomStorage.api + '/upload_file', itemAlias: 'temp_file' });
     }
-    HomePageComponent.prototype.ngOnInit = function () {
+    HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.windowHeight = window.innerHeight;
         this.uploader.onAfterAddingFile = function (file) { file.withCredentials = false; };
@@ -362,15 +362,15 @@ var HomePageComponent = /** @class */ (function () {
             location.replace(_this.commomStorage.app + "/views");
         };
     };
-    HomePageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home-page',
             template: __webpack_require__(/*! ./home-page.component.html */ "./src/app/home-page/home-page.component.html"),
             styles: [__webpack_require__(/*! ./home-page.component.css */ "./src/app/home-page/home-page.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_commond_storage_service__WEBPACK_IMPORTED_MODULE_3__["CommonStorageService"]])
-    ], HomePageComponent);
-    return HomePageComponent;
+    ], HomeComponent);
+    return HomeComponent;
 }());
 
 

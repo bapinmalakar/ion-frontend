@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomeComponent } from './home-page/home-page.component';
 import { CommonStorageService } from './services/commond_storage.service';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { ViewDetailsComponent } from './view-details/view-details.component';
@@ -16,7 +16,7 @@ import { AllThermoViewComponent } from './all-thermo-view/all-thermo-view.compon
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    HomeComponent,
     FileSelectDirective,
     ViewDetailsComponent,
     HighchartComponent,

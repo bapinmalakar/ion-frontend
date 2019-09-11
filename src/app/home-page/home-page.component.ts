@@ -10,7 +10,7 @@ declare var bootbox: any;
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomeComponent implements OnInit {
   windowHeight: number = 770;
   thermometers: any = [];
   public uploader: FileUploader;
