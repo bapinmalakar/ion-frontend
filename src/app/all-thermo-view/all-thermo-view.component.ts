@@ -24,7 +24,6 @@ export class AllThermoViewComponent implements OnInit {
   ngOnInit() {
     const urlParse = window.location.href.split('/');
     if (urlParse[urlParse.length - 1] !== 'all_view') {
-      console.log('Inside if case');
       this.selectedName = urlParse[urlParse.length - 1];
       this.getDataOfThermometer();
     }
@@ -33,7 +32,6 @@ export class AllThermoViewComponent implements OnInit {
 
   getAllTherometer() {
     this._httpService.getAllThermometer().subscribe(data => {
-      console.log('data is: ', data);
       if (!data.length) {
         const self = this;
         bootbox.alert({
@@ -61,7 +59,6 @@ export class AllThermoViewComponent implements OnInit {
     this.fetchingData = true;
     this._httpService.fetchDetailsOfAThermometer(this.selectedName).subscribe(
       data => {
-        console.log('Data is: ', data);
         if (!data) {
           bootbox.alert({ message: "We didn't found any thermometer with this name", size: 'small' });
           this.fetchingData = false;
@@ -75,7 +72,6 @@ export class AllThermoViewComponent implements OnInit {
   }
 
   onChangeYear(index: any) {
-    console.log('indes ix: ', index);
     const data = this.thermoDetails['year_details'][index];
     [this.daySpentChart, this.monthSpentChart] = [this.prepareChartDateForAYear('day', data, this.thermoDetails['years'][index]), this.prepareChartDateForAYear('month', data, this.thermoDetails['years'][index])]
   }
@@ -116,7 +112,6 @@ export class AllThermoViewComponent implements OnInit {
         data: data[type == 'day' ? 'days' : 'months'].map((d) => { return { name: d, y: data[`${type == 'day' ? 'day_spent' : 'month_spent'}`][d] } })
       }]
     };
-    console.log('Now object is: ', obj);
     return obj;
   }
 

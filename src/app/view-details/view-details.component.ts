@@ -24,14 +24,12 @@ export class ViewDetailsComponent implements OnInit {
 
   ngOnInit() {
     this._activateRoute.params.subscribe(params => {
-      console.log('Param is: ', params)
       this.fileName = params['name'];
       setTimeout(() => this.socketFunctions(), 1000);
     });
   }
 
   socketFunctions() {
-    console.log('Socket function called', this._commonStorage.socket);
     this.readingFinish = false;
     this.processing = true;
     this._commonStorage.socket.emit('process-my-file', { fileName: this.fileName, socketId: this._commonStorage.socket.id });
@@ -60,14 +58,11 @@ export class ViewDetailsComponent implements OnInit {
   }
 
   fileReadingFinish(flag) {
-    console.log('Flag is: ', flag);
     this.readingFinish = true;
   }
 
   setSelectedYear(yearIs: string = '') {
-    console.log('Year is: ', yearIs);
     this.selectedYear = this.analyticsData[yearIs];
-    console.log('Select year is::: ', this.selectedYear);
     this.selectYear = yearIs;
     this.prepareDaySpentChart();
     this.prepareMonthSpent();
@@ -146,7 +141,6 @@ export class ViewDetailsComponent implements OnInit {
         data: this.selectedYear['months'].map((d) => { return { name: d, y: this.selectedYear['month_spent'][d] } })
       }]
     };
-    console.log('Now object is: ', obj);
     this.monthSpentChart = obj;
   }
 

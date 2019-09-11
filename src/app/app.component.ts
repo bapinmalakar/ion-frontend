@@ -14,14 +14,12 @@ export class AppComponent implements OnInit {
   constructor(private _commonStorage: CommonStorageService) { }
 
   ngOnInit() {
-    console.log('Socket connection calle');
+    console.log('Socket connection called');
     this.connectToSocket();
   }
 
   connectToSocket() {
     this._commonStorage.socket = Socket(this._commonStorage.root);
-    console.log('sockettt: ', this._commonStorage.socket);
-    // this._commonStorage.socket.on('my-socket-id', (data)=> console.log('Id is: ', data))
   }
 }
 

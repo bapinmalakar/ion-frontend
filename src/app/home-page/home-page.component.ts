@@ -28,7 +28,6 @@ export class HomePageComponent implements OnInit {
     //overide the onCompleteItem property of the uploader so we are 
     //able to deal with the server response.
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log("ImageUpload:uploaded:", item, status, response);
       this.uploading = false;
       location.replace(`${this.commomStorage.app}/views/${this.fileName}`);
     };
@@ -40,9 +39,8 @@ export class HomePageComponent implements OnInit {
     if (!this.thermometers.length) {
       this.uploader.uploadAll();
     } else {
-
       const indexIs = this.thermometers.findIndex(d => d.name == this.fileName);
-      if (indexIs) {
+      if (indexIs !=-1) {
         bootbox.confirm({
           message: `${this.fileName} already present. Are you want to update again?`,
           buttons: {
@@ -57,6 +55,8 @@ export class HomePageComponent implements OnInit {
           },
           callback: this.submitFile.bind(this)
         })
+      } else {
+        this.uploader.uploadAll();
       }
     }
   }
@@ -79,7 +79,6 @@ export class HomePageComponent implements OnInit {
 
   getAllThermometer() {
     this._httpService.getAllThermometer().subscribe(data => {
-      console.log('date is: ', data);
       if (data.length) {
         this.thermometers.push({ _id: -1, name: "Select a thermometer" });
         this.thermometers.push(...data);
